@@ -1,0 +1,51 @@
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  align-items: center;
+
+  &__content {
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__illustration {
+    display: flex;
+    justify-content: center;
+
+    img {
+      max-width: 320px;
+      width: 100%;
+    }
+  }
+}
+
+.benefits {
+  margin: 3rem 0;
+  display: grid;
+  gap: 1.5rem;
+
+  .benefit {
+    padding: 1.5rem;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 8px 16px rgba(45, 42, 68, 0.08);
+
+    h2 {
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.auth-section {
+  margin-top: 3rem;
+}
