@@ -1,0 +1,42 @@
+@use 'sass:color';
+
+:root {
+  --primary-color: #ff6f61;
+  --secondary-color: #ffd166;
+  --background-color: #f7f7ff;
+  --text-color: #2d2a44;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Helvetica', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+a {
+  color: inherit;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color), color.scale(var(--primary-color), $lightness: -10%));
+  border: none;
+  border-radius: 999px;
+  color: #fff;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(255, 111, 97, 0.3);
+  }
+}
+
+.card {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 8px 30px rgba(45, 42, 68, 0.1);
+  padding: 2rem;
+}
