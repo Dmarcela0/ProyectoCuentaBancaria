@@ -1,0 +1,44 @@
+@use 'sass:color';
+
+.dashboard__content {
+  display: grid;
+  gap: 2rem;
+
+  .highlight {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255, 122, 198, 0.18), rgba(110, 231, 255, 0.18));
+    border: 3px solid rgba(255, 224, 102, 0.4);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px dashed rgba(47, 25, 95, 0.12);
+    }
+
+    .positive {
+      color: color.scale(var(--secondary-color), $lightness: -10%);
+    }
+  }
+
+  .goals {
+    display: grid;
+    gap: 1rem;
+
+    .goal {
+      padding: 1rem;
+      border-radius: 16px;
+      background: rgba(255, 224, 102, 0.35);
+      border: 2px dashed rgba(110, 231, 255, 0.6);
+    }
+  }
+}
+
+.error {
+  color: color.scale(var(--primary-color), $lightness: -15%);
+}

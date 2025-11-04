@@ -1,0 +1,59 @@
+.switcher {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  button {
+    flex: 1;
+    padding: 0.75rem;
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background: rgba(255, 111, 97, 0.1);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &.active {
+      background: var(--primary-color);
+      color: #fff;
+    }
+  }
+}
+
+form {
+  display: grid;
+  gap: 1rem;
+
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+      font-weight: 600;
+    }
+
+    input {
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(45, 42, 68, 0.2);
+      font-size: 1rem;
+    }
+  }
+
+  .message {
+    color: #d62828;
+    font-weight: 600;
+  }
+}
+
+.hint {
+  margin-top: 1.5rem;
+  text-align: center;
+
+  a {
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: 600;
+  }
+}

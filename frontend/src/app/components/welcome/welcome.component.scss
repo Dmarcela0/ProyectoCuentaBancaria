@@ -1,0 +1,57 @@
+@use 'sass:color';
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  align-items: center;
+
+  &__content {
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      color: color.scale(var(--text-color), $lightness: 10%);
+    }
+  }
+
+  &__illustration {
+    display: flex;
+    justify-content: center;
+
+    img {
+      max-width: 320px;
+      width: 100%;
+    }
+  }
+}
+
+.benefits {
+  margin: 3rem 0;
+  display: grid;
+  gap: 1.5rem;
+
+  .benefit {
+    padding: 1.5rem;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(255, 122, 198, 0.18), rgba(110, 231, 255, 0.18));
+    box-shadow: 0 6px 18px rgba(47, 25, 95, 0.08);
+
+    h2 {
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+      color: var(--text-color);
+    }
+  }
+}
+
+.auth-section {
+  margin-top: 3rem;
+  border: 3px dashed rgba(255, 224, 102, 0.6);
+}
