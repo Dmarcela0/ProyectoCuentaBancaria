@@ -1,0 +1,31 @@
+<section class="hero">
+  <div class="hero__content card">
+    <h1>Tuticuenta crece contigo</h1>
+    <p>
+      Tuticuenta acompaña a niños y niñas de Colombia entre 7 y 14 años en su primera
+      experiencia financiera, con retos, historietas y personajes que convierten el ahorro
+      en pesos colombianos en una aventura nacional.
+    </p>
+    <a routerLink="/dashboard" class="btn-primary">Ingresar a mi cuenta</a>
+  </div>
+  <div class="hero__illustration">
+    <img class="hero__main" src="assets/illustration-saving.svg" alt="Niños ahorrando" />
+    <img class="hero__sticker hero__sticker--friends" src="assets/character-friends.svg" alt="Amigos celebrando" />
+    <img class="hero__sticker hero__sticker--rocket" src="assets/character-rocket.svg" alt="Niña astronauta" />
+  </div>
+</section>
+<section class="benefits">
+  <article class="benefit" *ngFor="let benefit of benefits">
+    <div class="benefit__icon">
+      <img src="assets/character-stars.svg" alt="Decoración" />
+    </div>
+    <div class="benefit__text">
+      <h2>{{ benefit }}</h2>
+      <p>Comienza hoy mismo y convierte cada meta en una aventura.</p>
+    </div>
+  </article>
+</section>
+<section class="auth-section card">
+  <h2>Regístrate o inicia sesión</h2>
+  <app-auth-form></app-auth-form>
+</section>

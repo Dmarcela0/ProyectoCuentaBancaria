@@ -1,0 +1,30 @@
+<svg width="260" height="220" viewBox="0 0 260 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="30" y1="20" x2="230" y2="200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5EDFF" />
+      <stop offset="1" stop-color="#F7A9FF" stop-opacity="0.65" />
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" width="240" height="200" rx="28" fill="url(#bg)" stroke="#A77BF9" stroke-width="2" opacity="0.85" />
+  <circle cx="90" cy="100" r="42" fill="#A77BF9" opacity="0.9" />
+  <circle cx="170" cy="100" r="42" fill="#F7A9FF" opacity="0.9" />
+  <path d="M60 160 C95 125, 165 125, 200 160" stroke="#3C2564" stroke-width="8" stroke-linecap="round" fill="none" />
+  <g transform="translate(70 80)">
+    <circle cx="0" cy="0" r="24" fill="#FFD166" />
+    <circle cx="-8" cy="-4" r="4" fill="#3C2564" />
+    <circle cx="8" cy="-4" r="4" fill="#3C2564" />
+    <path d="M-6 8 Q0 14 6 8" stroke="#3C2564" stroke-width="3" stroke-linecap="round" fill="none" />
+  </g>
+  <g transform="translate(150 82)">
+    <path d="M0 -24 C16 -24 24 -12 24 6 C24 24 12 34 0 34 C-12 34 -24 24 -24 6 C-24 -12 -16 -24 0 -24Z" fill="#9FF3F0" />
+    <circle cx="-8" cy="-2" r="4" fill="#3C2564" />
+    <circle cx="8" cy="-2" r="4" fill="#3C2564" />
+    <path d="M-8 12 Q0 20 8 12" stroke="#3C2564" stroke-width="3" stroke-linecap="round" fill="none" />
+  </g>
+  <g transform="translate(128 54)">
+    <path d="M0 -18 L12 4 H-12 Z" fill="#A77BF9" />
+    <path d="M0 -4 V24" stroke="#3C2564" stroke-width="3" stroke-linecap="round" />
+    <circle cx="0" cy="32" r="6" fill="#FFD166" />
+  </g>
+  <text x="130" y="190" text-anchor="middle" font-family="Poppins" font-size="26" font-weight="700" fill="#3C2564">Tuticuenta</text>
+</svg>
