@@ -73,6 +73,7 @@ public class UserAccount {
         return JsonUtils.object(
                 JsonUtils.stringField("childName", childName),
                 JsonUtils.numberField("age", age),
+                JsonUtils.stringField("currency", "COP"),
                 JsonUtils.numberField("balance", balance),
                 JsonUtils.quote("transactions") + ":" + JsonUtils.array(transactionJson),
                 JsonUtils.quote("goals") + ":" + JsonUtils.array(goalsJson)

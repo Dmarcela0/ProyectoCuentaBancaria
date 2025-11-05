@@ -19,11 +19,11 @@ public final class DemoDataInitializer {
                 "tutora@tuticuenta.com",
                 PasswordHasher.hash("tutisegura")
         );
-        demo.deposit("Mesada de abuela", 35.0);
-        demo.deposit("Venta de dibujos", 18.5);
-        demo.withdraw("Carrito educativo", 12.99);
-        demo.addGoal("Microscopio infantil", 120.0, LocalDate.now().plusMonths(6));
-        demo.addGoal("Campamento espacial", 220.0, LocalDate.now().plusMonths(12));
+        demo.deposit("Mesada de la abuela", 35000);
+        demo.deposit("Venta de manillas en la escuela", 18500);
+        demo.withdraw("Libro de ciencia ficción", 12990);
+        demo.addGoal("Microscopio infantil", 320000, LocalDate.now().plusMonths(6));
+        demo.addGoal("Campamento astronómico en Villa de Leyva", 780000, LocalDate.now().plusMonths(12));
         repository.save(demo);
     }
 }

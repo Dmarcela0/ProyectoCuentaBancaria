@@ -13,6 +13,7 @@ export interface SavingsGoal {
 export interface AccountSummary {
   childName: string;
   age: number;
+  currency: string;
   balance: number;
   transactions: SavingsTransaction[];
   goals: SavingsGoal[];

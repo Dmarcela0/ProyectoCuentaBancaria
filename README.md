@@ -1,9 +1,9 @@
 # Tuticuenta
 
-Aplicación web demostrativa para una cuenta de ahorros orientada a niños y niñas de 7 a 14 años. El proyecto incluye:
+Aplicación web demostrativa para una cuenta de ahorros colombiana orientada a niños y niñas de 7 a 14 años. El proyecto incluye:
 
-- **Backend Java ligero**: Servidor HTTP incluido en el JDK con autenticación firmada y almacenamiento en memoria para registrar familias y consultar el resumen de la cuenta.
-- **Frontend Angular**: Interfaz lúdica con módulos de registro, inicio de sesión y tablero de progreso.
+- **Backend Java ligero**: Servidor HTTP incluido en el JDK con autenticación firmada y almacenamiento en memoria para registrar familias y consultar el resumen de la cuenta en pesos colombianos.
+- **Frontend Angular**: Interfaz lúdica con módulos de registro, inicio de sesión y tablero de progreso adaptados a la cultura colombiana.
 
 ## Requisitos
 
@@ -38,4 +38,4 @@ El frontend está configurado para comunicarse con `http://localhost:8080`.
 - **Correo**: `tutora@tuticuenta.com`
 - **Contraseña**: `tutisegura`
 
-Con estas credenciales se carga una cuenta de ejemplo con metas y movimientos.
+Con estas credenciales se carga una cuenta de ejemplo con metas y movimientos expresados en pesos colombianos.

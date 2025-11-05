@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class WelcomeComponent {
   benefits = [
-    'Metas de ahorro ilustradas en Tuticuenta',
-    'Consejos semanales para padres y tutores',
-    'Seguimiento de hábitos y recompensas divertidas'
+    'Metas de ahorro ilustradas en pesos colombianos',
+    'Consejos semanales para familias colombianas',
+    'Seguimiento de hábitos con personajes típicos del país'
   ];
 }

@@ -4,14 +4,19 @@
   <div *ngIf="summary" class="dashboard__content">
     <div class="card highlight">
       <h1>¡Hola {{ summary.childName }}!</h1>
-      <p>Tu ahorro actual es de <strong>{{ summary.balance | currency:'USD':'symbol-narrow' }}</strong></p>
+      <p>
+        Tu ahorro actual en Tuticuenta es de
+        <strong>{{ summary.balance | currency:(summary.currency || 'COP'):'symbol':'1.0-0':'es-CO' }}</strong>
+      </p>
     </div>
     <section class="card">
       <h2>Últimos movimientos</h2>
       <ul>
         <li *ngFor="let transaction of summary.transactions">
           <span>{{ transaction.description }}</span>
-          <span [class.positive]="transaction.amount >= 0">{{ transaction.amount | currency:'USD':'symbol-narrow' }}</span>
+          <span [class.positive]="transaction.amount >= 0">
+            {{ transaction.amount | currency:(summary.currency || 'COP'):'symbol':'1.0-0':'es-CO' }}
+          </span>
         </li>
       </ul>
     </section>
@@ -20,7 +25,7 @@
       <div class="goals">
         <article class="goal" *ngFor="let goal of summary.goals">
           <h3>{{ goal.name }}</h3>
-          <p>Meta: {{ goal.targetAmount | currency:'USD':'symbol-narrow' }}</p>
+          <p>Meta: {{ goal.targetAmount | currency:(summary.currency || 'COP'):'symbol':'1.0-0':'es-CO' }}</p>
           <p>Para: {{ goal.targetDate | date }}</p>
         </article>
       </div>
