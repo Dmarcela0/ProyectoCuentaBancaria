@@ -1,0 +1,134 @@
+@use 'sass:color';
+@use '../../../styles/theme';
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  align-items: center;
+
+  &__content {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -16px -12px -24px auto;
+      width: 160px;
+      background: url('/assets/character-stars.svg') center/contain no-repeat;
+      opacity: 0.25;
+      transform: rotate(-8deg);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      color: color.scale(theme.$text-color, $lightness: 12%);
+    }
+  }
+
+  &__illustration {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(159, 243, 240, 0.6), transparent 70%),
+        radial-gradient(circle at 70% 70%, rgba(247, 169, 255, 0.45), transparent 80%);
+      z-index: 0;
+      filter: blur(0.5px);
+    }
+
+    .hero__main {
+      max-width: 320px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero__sticker {
+      position: absolute;
+      z-index: 2;
+      width: 120px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 12px 32px rgba(60, 37, 100, 0.16);
+      padding: 1rem;
+    }
+
+    .hero__sticker--friends {
+      bottom: -12px;
+      left: -10px;
+      transform: rotate(-6deg);
+    }
+
+    .hero__sticker--rocket {
+      top: -24px;
+      right: -10px;
+      transform: rotate(8deg);
+    }
+  }
+}
+
+.benefits {
+  margin: 3rem 0;
+  display: grid;
+  gap: 1.5rem;
+
+  .benefit {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-radius: 22px;
+    background: linear-gradient(135deg, rgba(167, 123, 249, 0.18), rgba(247, 169, 255, 0.22));
+    box-shadow: 0 10px 28px rgba(60, 37, 100, 0.12);
+
+    &__icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #fff;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 24px rgba(167, 123, 249, 0.22);
+
+      img {
+        width: 48px;
+      }
+    }
+
+    &__text {
+      h2 {
+        margin-bottom: 0.5rem;
+        font-size: 1.3rem;
+        color: theme.$text-color;
+      }
+
+      p {
+        margin: 0;
+        color: color.scale(theme.$text-color, $lightness: 12%);
+      }
+    }
+  }
+}
+
+.auth-section {
+  margin-top: 3rem;
+  border: 3px dashed rgba(198, 184, 255, 0.7);
+  background: linear-gradient(135deg, rgba(245, 237, 255, 0.95), rgba(247, 169, 255, 0.12));
+}
