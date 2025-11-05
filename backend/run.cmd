@@ -16,7 +16,9 @@ rem Listar las fuentes Java en un archivo temporal
 echo Compilando fuentes Java...
 >"%SOURCES_LIST%" (
   for /r "%SCRIPT_DIR%\src\main\java" %%f in (*.java) do (
-    echo "%%f"
+    set "file=%%f"
+    set "file=!file:\=/!"
+    echo ^"!file!^"
   )
 )
 
