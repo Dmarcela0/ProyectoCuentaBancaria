@@ -1,0 +1,48 @@
+@use 'sass:color';
+@use '../../../styles/theme';
+
+.dashboard__content {
+  display: grid;
+  gap: 2rem;
+
+  .highlight {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(167, 123, 249, 0.18), rgba(159, 243, 240, 0.22));
+    border: 3px solid rgba(198, 184, 255, 0.55);
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 12px 28px rgba(60, 37, 100, 0.14);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px dashed rgba(60, 37, 100, 0.12);
+    }
+
+    .positive {
+      color: color.scale(theme.$secondary-color, $lightness: -12%);
+    }
+  }
+
+  .goals {
+    display: grid;
+    gap: 1rem;
+
+    .goal {
+      padding: 1rem;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255, 209, 102, 0.4), rgba(167, 123, 249, 0.2));
+      border: 2px dashed rgba(159, 243, 240, 0.6);
+    }
+  }
+}
+
+.error {
+  color: color.scale(theme.$primary-color, $lightness: -15%);
+}
