@@ -1,0 +1,17 @@
+$primary-color: #a77bf9;
+$secondary-color: #f7a9ff;
+$accent-color: #ffd166;
+$background-color: #f5edff;
+$text-color: #3c2564;
+$decorative-color: #c6b8ff;
+$mint-color: #9ff3f0;
+
+:root {
+  --primary-color: #{$primary-color};
+  --secondary-color: #{$secondary-color};
+  --accent-color: #{$accent-color};
+  --background-color: #{$background-color};
+  --text-color: #{$text-color};
+  --decorative-color: #{$decorative-color};
+  --mint-color: #{$mint-color};
+}
