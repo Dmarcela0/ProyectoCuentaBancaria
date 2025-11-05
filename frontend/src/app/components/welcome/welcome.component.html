@@ -1,0 +1,20 @@
+<section class="hero">
+  <div class="hero__content card">
+    <h1>Tuticuenta crece contigo</h1>
+    <p>Tuticuenta acompaña a niños de 7 a 14 años en su primera experiencia financiera, con herramientas diseñadas para aprender jugando.</p>
+    <a routerLink="/dashboard" class="btn-primary">Ingresar a mi cuenta</a>
+  </div>
+  <div class="hero__illustration">
+    <img src="assets/illustration-saving.svg" alt="Niños ahorrando" />
+  </div>
+</section>
+<section class="benefits">
+  <article class="benefit" *ngFor="let benefit of benefits">
+    <h2>{{ benefit }}</h2>
+    <p>Comienza hoy mismo y convierte cada meta en una aventura.</p>
+  </article>
+</section>
+<section class="auth-section card">
+  <h2>Regístrate o inicia sesión</h2>
+  <app-auth-form></app-auth-form>
+</section>
