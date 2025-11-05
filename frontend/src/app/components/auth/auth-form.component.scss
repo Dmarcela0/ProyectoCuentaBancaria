@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use '../../../styles/theme';
+
 .switcher {
   display: flex;
   gap: 1rem;
@@ -8,7 +11,7 @@
     padding: 0.75rem;
     border-radius: 999px;
     border: 2px solid transparent;
-    background: rgba(255, 111, 97, 0.1);
+    background: rgba(167, 123, 249, 0.12);
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -16,6 +19,7 @@
     &.active {
       background: var(--primary-color);
       color: #fff;
+      box-shadow: 0 12px 26px rgba(167, 123, 249, 0.35);
     }
   }
 }
@@ -36,12 +40,20 @@ form {
     input {
       padding: 0.75rem 1rem;
       border-radius: 12px;
-      border: 1px solid rgba(45, 42, 68, 0.2);
+      border: 1px solid rgba(60, 37, 100, 0.18);
       font-size: 1rem;
+      background: #fff;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+      &:focus {
+        border-color: color.scale(theme.$primary-color, $lightness: -5%);
+        box-shadow: 0 0 0 3px rgba(167, 123, 249, 0.18);
+        outline: none;
+      }
 
       &.invalid {
         border-color: #d62828;
-        box-shadow: 0 0 0 2px rgba(214, 40, 40, 0.15);
+        box-shadow: 0 0 0 3px rgba(214, 40, 40, 0.15);
       }
     }
   }

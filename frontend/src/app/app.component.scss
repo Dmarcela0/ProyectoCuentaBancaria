@@ -6,13 +6,31 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem 3rem;
-  background: linear-gradient(135deg, rgba(255, 122, 198, 0.25), rgba(110, 231, 255, 0.25));
-  box-shadow: 0 4px 18px rgba(47, 25, 95, 0.08);
+  background: linear-gradient(
+      135deg,
+      color.change(theme.$primary-color, $alpha: 0.28),
+      color.change(theme.$secondary-color, $alpha: 0.3)
+    ),
+    radial-gradient(circle at 10% 20%, rgba(159, 243, 240, 0.35) 0, transparent 55%),
+    radial-gradient(circle at 90% 10%, rgba(255, 209, 102, 0.28) 0, transparent 60%);
+  box-shadow: 0 6px 22px rgba(60, 37, 100, 0.12);
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
 
   .logo {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    &::before {
+      content: '';
+      width: 42px;
+      height: 42px;
+      background: url('/assets/character-stars.svg') center/contain no-repeat;
+    }
   }
 
   nav {
@@ -22,7 +40,7 @@
     a {
       text-decoration: none;
       font-weight: 600;
-      color: color.scale(theme.$text-color, $lightness: 5%);
+      color: color.scale(theme.$text-color, $lightness: 10%);
       position: relative;
 
       &.active::after {
@@ -34,13 +52,14 @@
         height: 3px;
         border-radius: 999px;
         background: var(--accent-color);
+        box-shadow: 0 6px 12px rgba(255, 209, 102, 0.45);
       }
     }
   }
 }
 
 main {
-  padding: 2rem;
+  padding: 2.5rem 2rem;
 }
 
 .app-footer {
