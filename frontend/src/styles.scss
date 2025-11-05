@@ -1,11 +1,5 @@
 @use 'sass:color';
-
-:root {
-  --primary-color: #ff6f61;
-  --secondary-color: #ffd166;
-  --background-color: #f7f7ff;
-  --text-color: #2d2a44;
-}
+@use './styles/theme';
 
 body {
   margin: 0;
@@ -19,7 +13,7 @@ a {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary-color), color.scale(var(--primary-color), $lightness: -10%));
+  background: linear-gradient(135deg, var(--primary-color), color.scale(theme.$primary-color, $lightness: -10%));
   border: none;
   border-radius: 999px;
   color: #fff;
@@ -35,8 +29,8 @@ a {
 }
 
 .card {
-  background: #fff;
+  background: #fffdf8;
   border-radius: 24px;
-  box-shadow: 0 8px 30px rgba(45, 42, 68, 0.1);
+  box-shadow: 0 10px 32px rgba(47, 25, 95, 0.12);
   padding: 2rem;
 }

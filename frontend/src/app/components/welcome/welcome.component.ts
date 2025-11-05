@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class WelcomeComponent {
   benefits = [
-    'Metas de ahorro ilustradas para motivar a los peques',
+    'Metas de ahorro ilustradas en Tuticuenta',
     'Consejos semanales para padres y tutores',
     'Seguimiento de hábitos y recompensas divertidas'
   ];

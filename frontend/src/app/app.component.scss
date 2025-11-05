@@ -1,10 +1,13 @@
+@use 'sass:color';
+@use '../styles/theme';
+
 .app-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem 3rem;
-  background: #fff;
-  box-shadow: 0 4px 18px rgba(45, 42, 68, 0.08);
+  background: linear-gradient(135deg, rgba(255, 122, 198, 0.25), rgba(110, 231, 255, 0.25));
+  box-shadow: 0 4px 18px rgba(47, 25, 95, 0.08);
 
   .logo {
     font-size: 1.5rem;
@@ -19,7 +22,7 @@
     a {
       text-decoration: none;
       font-weight: 600;
-      color: var(--text-color);
+      color: color.scale(theme.$text-color, $lightness: 5%);
       position: relative;
 
       &.active::after {
@@ -30,7 +33,7 @@
         width: 100%;
         height: 3px;
         border-radius: 999px;
-        background: var(--primary-color);
+        background: var(--accent-color);
       }
     }
   }
@@ -43,5 +46,5 @@ main {
 .app-footer {
   text-align: center;
   padding: 2rem;
-  color: rgba(45, 42, 68, 0.7);
+  color: color.scale(theme.$text-color, $lightness: 15%);
 }
