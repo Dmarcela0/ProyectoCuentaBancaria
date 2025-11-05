@@ -1,0 +1,13 @@
+$primary-color: #ff7ac6;
+$secondary-color: #6ee7ff;
+$accent-color: #ffe066;
+$background-color: #fff7f0;
+$text-color: #2f195f;
+
+:root {
+  --primary-color: #{$primary-color};
+  --secondary-color: #{$secondary-color};
+  --accent-color: #{$accent-color};
+  --background-color: #{$background-color};
+  --text-color: #{$text-color};
+}

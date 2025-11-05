@@ -1,0 +1,34 @@
+<div class="switcher">
+  <button type="button" [class.active]="mode === 'login'" (click)="mode = 'login'">Iniciar sesión</button>
+  <button type="button" [class.active]="mode === 'register'" (click)="mode = 'register'">Registrarme</button>
+</div>
+<form (ngSubmit)="submit()" [formGroup]="form">
+  <div class="form-row" *ngIf="mode === 'register'">
+    <label>Nombre del niño o niña</label>
+    <input type="text" formControlName="childName" placeholder="Ej. Sofía" />
+  </div>
+  <div class="form-row" *ngIf="mode === 'register'">
+    <label>Edad</label>
+    <input type="number" min="7" max="14" formControlName="age" />
+  </div>
+  <div class="form-row" *ngIf="mode === 'register'">
+    <label>Tutor</label>
+    <input type="text" formControlName="guardianName" placeholder="Nombre del tutor" />
+  </div>
+  <div class="form-row">
+    <label>Correo electrónico</label>
+    <input type="email" formControlName="guardianEmail" placeholder="tu@correo.com" />
+  </div>
+  <div class="form-row">
+    <label>Contraseña</label>
+    <input type="password" formControlName="password" placeholder="Mínimo 6 caracteres" />
+  </div>
+  <p class="message" *ngIf="message">{{ message }}</p>
+  <button class="btn-primary" type="submit" [disabled]="loading">
+    {{ loading ? 'Procesando...' : (mode === 'login' ? 'Entrar' : 'Crear cuenta') }}
+  </button>
+</form>
+<p class="hint">
+  {{ mode === 'login' ? '¿Aún no tienes una cuenta?' : '¿Ya tienes una cuenta?' }}
+  <a (click)="switchMode()" role="button">{{ mode === 'login' ? 'Crear una ahora' : 'Iniciar sesión' }}</a>
+</p>
