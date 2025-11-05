@@ -25,6 +25,10 @@ export class AuthFormComponent {
     this.applyValidators();
   }
 
+  get ageControl() {
+    return this.form.get('age');
+  }
+
   switchMode(): void {
     this.mode = this.mode === 'login' ? 'register' : 'login';
     this.message = '';
@@ -32,8 +36,11 @@ export class AuthFormComponent {
   }
 
   submit(): void {
-    if (this.form.invalid && this.mode === 'register') {
-      this.message = 'Por favor revisa los datos.';
+    if (this.mode === 'register' && this.form.invalid) {
+      this.message = this.ageControl?.errors
+        ? 'La edad debe estar entre 7 y 14 años para crear una cuenta Tuticuenta.'
+        : 'Por favor revisa los datos.';
+      this.form.markAllAsTouched();
       return;
     }
 

@@ -38,7 +38,18 @@ form {
       border-radius: 12px;
       border: 1px solid rgba(45, 42, 68, 0.2);
       font-size: 1rem;
+
+      &.invalid {
+        border-color: #d62828;
+        box-shadow: 0 0 0 2px rgba(214, 40, 40, 0.15);
+      }
     }
+  }
+
+  .field-error {
+    color: #d62828;
+    font-size: 0.85rem;
+    font-weight: 600;
   }
 
   .message {
