@@ -23,6 +23,7 @@ Aplicación web demostrativa para una cuenta de ahorros colombiana orientada a n
      cd backend
      .\run.cmd
      ```
+   - Nota: si venías de una versión anterior basada en Spring Boot y aún tienes carpetas como `backend/src/main/java/com/bankids`, bórralas o vuelve a clonar el repositorio. Los scripts de ejecución solo compilan las clases bajo `com/tuticuenta`.
 
 2. **Frontend**
    ```bash
