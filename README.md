@@ -13,10 +13,16 @@ Aplicación web demostrativa para una cuenta de ahorros orientada a niños y ni�
 ## Ejecución
 
 1. **Backend**
-   ```bash
-   cd backend
-   ./run.sh
-   ```
+   - Linux / macOS
+     ```bash
+     cd backend
+     ./run.sh
+     ```
+   - Windows (PowerShell o CMD)
+     ```powershell
+     cd backend
+     .\run.cmd
+     ```
 
 2. **Frontend**
    ```bash
