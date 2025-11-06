@@ -1,0 +1,11 @@
+[build]
+builder = "nixpacks"
+
+[build.nixpacks]
+providers = ["java"]
+
+[build.nixpacks.build]
+cmd = "javac -cp ./lib/postgresql-42.7.3.jar -d out $(find src -name '*.java')"
+
+[start]
+cmd = "java -cp out:lib/postgresql-42.7.3.jar com.tuticuenta.server.AppServer"
