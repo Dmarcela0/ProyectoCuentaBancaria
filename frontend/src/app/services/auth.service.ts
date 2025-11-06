@@ -14,13 +14,13 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(payload: LoginPayload): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/api/auth/login`, payload).pipe(
+    return this.http.post<AuthResponse>(`${this.apiUrl}/auth/login`, payload).pipe(
       tap(response => this.persist(response))
     );
   }
 
   register(payload: RegisterPayload): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/api/auth/register`, payload).pipe(
+    return this.http.post<AuthResponse>(`${this.apiUrl}/auth/register`, payload).pipe(
       tap(response => this.persist(response))
     );
   }
