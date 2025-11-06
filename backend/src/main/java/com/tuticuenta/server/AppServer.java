@@ -20,21 +20,31 @@ import com.tuticuenta.server.shared.UserAccountRepository;
 import com.tuticuenta.server.util.TokenService;
 
 public class AppServer {
+
     private final HttpServer httpServer;
     private final AuthService authService;
     private final AccountService accountService;
     private final TokenService tokenService;
 
+    private static final String JDBC_URL = "jdbc:postgresql://ep-shy-cloud-aebwcp72-pooler.c-2.us-east-2.aws.neon.tech:5432/neondb?user=neondb_owner&password=npg_4K9DbkgxeZJl&sslmode=require&channel_binding=require";
+
     public AppServer(int port) throws IOException {
         this.httpServer = HttpServer.create(new InetSocketAddress(port), 0);
-        DatabaseClient databaseClient = new DatabaseClient(resolveDatabaseUrl());
+
+        // ✅ Ahora creamos DatabaseClient sin usar resolveDatabaseUrl()
+        DatabaseClient databaseClient = new DatabaseClient(JDBC_URL);
+
+        // ✅ Inicializamos DB (crea tablas si no existen)
         databaseClient.initialize();
+
         UserAccountRepository repository = new UserAccountRepository(databaseClient);
         this.tokenService = new TokenService();
         this.authService = new AuthService(repository, tokenService);
         this.accountService = new AccountService(repository);
+
         DemoDataInitializer.seed(repository);
         configureRoutes();
+
         this.httpServer.setExecutor(Executors.newCachedThreadPool());
     }
 
@@ -46,6 +56,7 @@ public class AppServer {
 
     private void handlePost(HttpExchange exchange, BodyProcessor processor) throws IOException {
         applyCors(exchange);
+
         if ("OPTIONS".equalsIgnoreCase(exchange.getRequestMethod())) {
             respond(exchange, 204, "");
             return;
@@ -56,11 +67,7 @@ public class AppServer {
         }
         String body = readBody(exchange.getRequestBody());
         Optional<String> response = processor.process(body);
-        if (response.isPresent()) {
-            respond(exchange, 200, response.get());
-        } else {
-            respond(exchange, 400, "Solicitud inválida");
-        }
+        respond(exchange, response.isPresent() ? 200 : 400, response.orElse("Solicitud inválida"));
     }
 
     private void handleSummary(HttpExchange exchange) throws IOException {
@@ -87,11 +94,7 @@ public class AppServer {
             return;
         }
         Optional<String> summary = accountService.summaryFor(email.get());
-        if (summary.isEmpty()) {
-            respond(exchange, 404, "Cuenta no encontrada");
-            return;
-        }
-        respond(exchange, 200, summary.get());
+        respond(exchange, summary.isPresent() ? 200 : 404, summary.orElse("Cuenta no encontrada"));
     }
 
     private static void applyCors(HttpExchange exchange) {
@@ -117,7 +120,7 @@ public class AppServer {
 
     public void start() {
         httpServer.start();
-        System.out.println("Servidor Tuticuenta activo en http://localhost:" + httpServer.getAddress().getPort());
+        System.out.println("✅ Servidor Tuticuenta activo en http://localhost:" + httpServer.getAddress().getPort());
     }
 
     public static void main(String[] args) throws IOException {
@@ -130,14 +133,6 @@ public class AppServer {
             }
         }
         new AppServer(port).start();
-    }
-
-    private static String resolveDatabaseUrl() {
-        String envUrl = System.getenv("DATABASE_URL");
-        if (envUrl != null && !envUrl.isBlank()) {
-            return envUrl;
-        }
-        return "jdbc:postgresql://db.xjelotkvsagcinxbkgkh.supabase.co:5432/postgres?user=postgres&password=Garzon103*";
     }
 
     @FunctionalInterface
