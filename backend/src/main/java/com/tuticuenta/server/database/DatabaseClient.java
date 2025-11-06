@@ -9,7 +9,7 @@ public class DatabaseClient {
     private final String jdbcUrl;
 
     public DatabaseClient(String jdbcUrl) {
-        this.jdbcUrl = jdbcUrl;
+        this.jdbcUrl = "jdbc:postgresql://db.xjelotkvsagcinxbkgkh.supabase.co:6543/postgres?user=postgres&password=Garzon103*";
     }
 
     public Connection getConnection() throws SQLException {
