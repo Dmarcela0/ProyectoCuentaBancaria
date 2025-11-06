@@ -27,19 +27,9 @@ if errorlevel 1 goto :fail
 
 del "%SOURCES_LIST%" >nul 2>&1
 
-set "CLASSPATH=%BUILD_DIR%"
-if defined POSTGRES_JDBC_JAR (
-  set "CLASSPATH=%CLASSPATH%;%POSTGRES_JDBC_JAR%"
-) else if exist "%SCRIPT_DIR%\lib" (
-  for %%f in ("%SCRIPT_DIR%\lib\*.jar") do if not defined POSTGRES_TEMP_JAR set "POSTGRES_TEMP_JAR=%%f"
-  if defined POSTGRES_TEMP_JAR (
-    set "CLASSPATH=%CLASSPATH%;%POSTGRES_TEMP_JAR%"
-  ) else (
-    echo Aviso: no se encontro el controlador JDBC de PostgreSQL. Coloca el .jar en backend\lib o define POSTGRES_JDBC_JAR.
-  )
-) else (
-  echo Aviso: no se encontro el controlador JDBC de PostgreSQL. Coloca el .jar en backend\lib o define POSTGRES_JDBC_JAR.
-)
+set "CLASSPATH=%BUILD_DIR%;%SCRIPT_DIR%\lib\postgresql-42.7.3.jar"
+echo CLASSPATH=%CLASSPATH%
+
 
 java -cp "%CLASSPATH%" com.tuticuenta.server.AppServer
 set "EXITCODE=%ERRORLEVEL%"
