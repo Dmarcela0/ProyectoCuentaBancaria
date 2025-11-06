@@ -1,6 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/angular-cli",
   "version": 1,
+  
   "newProjectRoot": "projects",
   "projects": {
     "bankids-frontend": {
