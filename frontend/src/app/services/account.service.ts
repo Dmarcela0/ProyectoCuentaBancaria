@@ -4,13 +4,33 @@ import { Observable } from 'rxjs';
 import { AccountSummary } from '../models/account-summary.model';
 import { environment } from '../../environments/environment';
 
+export interface TransactionPayload {
+  description: string;
+  amount: number;
+  type: 'deposit' | 'withdraw';
+}
+
+export interface GoalPayload {
+  name: string;
+  targetAmount: number;
+  targetDate: string;
+}
+
 @Injectable({ providedIn: 'root' })
 export class AccountService {
-  private apiUrl = `${environment.apiBaseUrl}/account`;
+  private apiUrl = `${environment.apiBaseUrl.replace(/\/$/, '')}/account`;
 
   constructor(private http: HttpClient) {}
 
   getSummary(): Observable<AccountSummary> {
     return this.http.get<AccountSummary>(`${this.apiUrl}/summary`);
+  }
+
+  addTransaction(payload: TransactionPayload): Observable<AccountSummary> {
+    return this.http.post<AccountSummary>(`${this.apiUrl}/transactions`, payload);
+  }
+
+  addGoal(payload: GoalPayload): Observable<AccountSummary> {
+    return this.http.post<AccountSummary>(`${this.apiUrl}/goals`, payload);
   }
 }
