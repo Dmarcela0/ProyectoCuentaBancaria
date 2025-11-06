@@ -1,0 +1,13 @@
+# Forzar Nixpacks a usar Java 17
+[phases.setup]
+nixPkgs = ["jdk17_headless", "bash"]
+
+[phases.build]
+cmds = [
+  "cd backend",
+  "mkdir -p out",
+  "javac -cp lib/postgresql-42.7.3.jar -d out $(find src/main/java -name '*.java')"
+]
+
+[start]
+cmd = "cd backend && java -cp out:lib/postgresql-42.7.3.jar com.tuticuenta.server.AppServer"
