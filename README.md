@@ -43,6 +43,10 @@ El frontend está configurado para comunicarse con `http://localhost:8080`.
 
 La primera ejecución del backend crea las tablas `tuticuenta_accounts`, `tuticuenta_transactions` y `tuticuenta_goals` si no existen, por lo que basta con iniciar el servidor para preparar la base de datos.
 
+## Despliegue público
+
+Si quieres compartir la aplicación bajo un dominio como `tuticuentaaprueba.com.co`, sigue la [guía de despliegue público](docs/DESPLIEGUE_PUBLICO.md) para configurar DNS, proxy inverso, HTTPS y la publicación del frontend.
+
 ## Credenciales de prueba
 
 - **Correo**: `tutora@tuticuenta.com`
