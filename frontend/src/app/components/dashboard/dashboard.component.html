@@ -17,6 +17,37 @@
         <h2>Últimos movimientos</h2>
         <span class="section-heading__badge">COP</span>
       </div>
+      <form class="form" [formGroup]="transactionForm" (ngSubmit)="submitTransaction()">
+        <div class="form__row">
+          <label>
+            <span>Descripción</span>
+            <input type="text" formControlName="description" placeholder="Ej: Mesada" />
+            <small class="form__field-error" *ngIf="transactionForm.get('description')?.invalid && transactionForm.get('description')?.touched">
+              Escribe una descripción corta.
+            </small>
+          </label>
+          <label>
+            <span>Monto</span>
+            <input type="number" formControlName="amount" min="1" step="1" />
+            <small class="form__field-error" *ngIf="transactionForm.get('amount')?.invalid && transactionForm.get('amount')?.touched">
+              Ingresa un valor mayor que cero.
+            </small>
+          </label>
+          <label>
+            <span>Tipo</span>
+            <select formControlName="type">
+              <option value="deposit">Depósito</option>
+              <option value="withdraw">Retiro</option>
+            </select>
+          </label>
+        </div>
+        <div class="form__actions">
+          <button type="submit" [disabled]="transactionSaving">
+            {{ transactionSaving ? 'Guardando...' : 'Agregar movimiento' }}
+          </button>
+          <span class="form__error" *ngIf="transactionError">{{ transactionError }}</span>
+        </div>
+      </form>
       <ul>
         <li *ngFor="let transaction of summary.transactions; let i = index">
           <div class="movements__icon" [class.positive]="transaction.amount >= 0">{{ i + 1 }}</div>
@@ -35,6 +66,37 @@
         <h2>Mis metas</h2>
         <span class="section-heading__badge">Sueños</span>
       </div>
+      <form class="form" [formGroup]="goalForm" (ngSubmit)="submitGoal()">
+        <div class="form__row form__row--goal">
+          <label>
+            <span>Nombre de la meta</span>
+            <input type="text" formControlName="name" placeholder="Ej: Bicicleta" />
+            <small class="form__field-error" *ngIf="goalForm.get('name')?.invalid && goalForm.get('name')?.touched">
+              Escribe un nombre para tu meta.
+            </small>
+          </label>
+          <label>
+            <span>Monto objetivo</span>
+            <input type="number" formControlName="targetAmount" min="1" step="1" />
+            <small class="form__field-error" *ngIf="goalForm.get('targetAmount')?.invalid && goalForm.get('targetAmount')?.touched">
+              Ingresa un valor mayor que cero.
+            </small>
+          </label>
+          <label>
+            <span>¿Para cuándo?</span>
+            <input type="date" formControlName="targetDate" />
+            <small class="form__field-error" *ngIf="goalForm.get('targetDate')?.invalid && goalForm.get('targetDate')?.touched">
+              Elige una fecha estimada.
+            </small>
+          </label>
+        </div>
+        <div class="form__actions">
+          <button type="submit" [disabled]="goalSaving">
+            {{ goalSaving ? 'Guardando...' : 'Agregar meta' }}
+          </button>
+          <span class="form__error" *ngIf="goalError">{{ goalError }}</span>
+        </div>
+      </form>
       <div class="goals__grid">
         <article class="goal" *ngFor="let goal of summary.goals">
           <h3>{{ goal.name }}</h3>

@@ -3,6 +3,7 @@ package com.tuticuenta.server.shared;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -81,16 +82,17 @@ public class UserAccount {
 
     public void deposit(String description, double amount) {
         balance += amount;
-        transactions.add(new SavingsTransaction(description, amount, LocalDateTime.now()));
+        transactions.add(0, new SavingsTransaction(description, amount, LocalDateTime.now()));
     }
 
     public void withdraw(String description, double amount) {
         balance -= amount;
-        transactions.add(new SavingsTransaction(description, -amount, LocalDateTime.now()));
+        transactions.add(0, new SavingsTransaction(description, -amount, LocalDateTime.now()));
     }
 
     public void addGoal(String name, double target, LocalDate targetDate) {
         goals.add(new SavingsGoal(name, target, targetDate));
+        goals.sort(Comparator.comparing(SavingsGoal::getTargetDate));
     }
 
     public String authResponse(String token) {
