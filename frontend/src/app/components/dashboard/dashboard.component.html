@@ -1,0 +1,49 @@
+<section class="dashboard">
+  <div *ngIf="loading" class="card">Cargando tu aventura de ahorro...</div>
+  <div *ngIf="error" class="card error">{{ error }}</div>
+  <div *ngIf="summary" class="dashboard__content">
+    <div class="card highlight">
+      <span class="highlight__ally">Banco Caja Social × Tuticuenta</span>
+      <h1>¡Hola {{ summary.childName }}!</h1>
+      <p>
+        Tu ahorro actual es de
+        <strong>{{ summary.balance | currency:(summary.currency || 'COP'):'symbol':'1.0-0':'es-CO' }}</strong>
+        en pesos colombianos.
+      </p>
+      <div class="highlight__age">Edad registrada: {{ summary.age }} años</div>
+    </div>
+    <section class="card movements">
+      <div class="section-heading">
+        <h2>Últimos movimientos</h2>
+        <span class="section-heading__badge">COP</span>
+      </div>
+      <ul>
+        <li *ngFor="let transaction of summary.transactions; let i = index">
+          <div class="movements__icon" [class.positive]="transaction.amount >= 0">{{ i + 1 }}</div>
+          <div class="movements__text">
+            <strong>{{ transaction.description }}</strong>
+            <span class="movements__date">{{ transaction.date | date:'medium' }}</span>
+          </div>
+          <span class="movements__amount" [class.positive]="transaction.amount >= 0">
+            {{ transaction.amount | currency:(summary.currency || 'COP'):'symbol':'1.0-0':'es-CO' }}
+          </span>
+        </li>
+      </ul>
+    </section>
+    <section class="card goals">
+      <div class="section-heading">
+        <h2>Mis metas</h2>
+        <span class="section-heading__badge">Sueños</span>
+      </div>
+      <div class="goals__grid">
+        <article class="goal" *ngFor="let goal of summary.goals">
+          <h3>{{ goal.name }}</h3>
+          <p class="goal__amount">
+            Meta: {{ goal.targetAmount | currency:(summary.currency || 'COP'):'symbol':'1.0-0':'es-CO' }}
+          </p>
+          <p class="goal__date">Para: {{ goal.targetDate | date }}</p>
+        </article>
+      </div>
+    </section>
+  </div>
+</section>

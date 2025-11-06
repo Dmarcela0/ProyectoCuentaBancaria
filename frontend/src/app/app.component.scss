@@ -1,0 +1,170 @@
+@use 'sass:color';
+@use '../styles/theme';
+
+.app-header {
+  position: relative;
+  padding: 2.5rem clamp(1.5rem, 4vw, 3.5rem) 2rem;
+  margin-bottom: clamp(2rem, 6vw, 3.5rem);
+  overflow: hidden;
+  border-bottom-left-radius: 36px;
+  border-bottom-right-radius: 36px;
+  box-shadow: 0 24px 60px rgba(60, 37, 100, 0.18);
+
+  &__background {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255, 209, 102, 0.4), transparent 60%),
+      radial-gradient(circle at 90% 10%, rgba(159, 243, 240, 0.35), transparent 55%),
+      linear-gradient(135deg, color.change(theme.$primary-color, $alpha: 0.92), color.scale(theme.$secondary-color, $lightness: 5%));
+    z-index: 0;
+  }
+
+  &__background::after,
+  &__background::before {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.35;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  &__background::before {
+    width: 220px;
+    height: 220px;
+    top: -60px;
+    right: -40px;
+  }
+
+  &__background::after {
+    width: 160px;
+    height: 160px;
+    bottom: -50px;
+    left: -30px;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    flex-wrap: wrap;
+  }
+
+  &__ally {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 12px 28px rgba(12, 77, 162, 0.28);
+
+    img {
+      height: 42px;
+    }
+  }
+
+  &__ally-text {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  &__logo {
+    font-size: clamp(2.7rem, 5vw, 3.6rem);
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 12px 30px rgba(50, 20, 110, 0.35);
+    position: relative;
+    padding-left: 2.5rem;
+  }
+
+  &__logo::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 54px;
+    height: 54px;
+    background: url('/assets/character-stars.svg') center/contain no-repeat;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+
+    a {
+      position: relative;
+      font-weight: 600;
+      padding-bottom: 0.4rem;
+      color: rgba(255, 255, 255, 0.92);
+      text-decoration: none;
+      transition: color 0.2s ease;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.55);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.2s ease;
+      }
+
+      &.active::after,
+      &:hover::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(-50%) translateX(0);
+  }
+  50% {
+    transform: translateY(-60%) translateX(6px);
+  }
+}
+
+.app-shell {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2.5rem) 4rem;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 3rem 1.5rem 4rem;
+  color: color.scale(theme.$text-color, $lightness: -5%);
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .app-header__content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

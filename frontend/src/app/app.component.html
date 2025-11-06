@@ -1,0 +1,22 @@
+<header class="app-header">
+  <div class="app-header__background"></div>
+  <div class="app-header__content">
+    <div class="app-header__brand">
+      <div class="app-header__ally">
+        <img src="assets/logo-banco-caja-social.svg" alt="Banco Caja Social" />
+        <span class="app-header__ally-text">Colaboración oficial</span>
+      </div>
+      <div class="app-header__logo">Tuticuenta</div>
+    </div>
+    <nav class="app-header__nav">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+      <a routerLink="/dashboard" routerLinkActive="active">Mi cuenta</a>
+    </nav>
+  </div>
+</header>
+<main class="app-shell">
+  <router-outlet></router-outlet>
+</main>
+<footer class="app-footer">
+  <p>Hecho con ♥ en Colombia junto a Banco Caja Social para impulsar los sueños en pesos.</p>
+</footer>

@@ -1,0 +1,89 @@
+@use 'sass:color';
+@use '../../../styles/theme';
+
+.switcher {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  button {
+    flex: 1;
+    padding: 0.85rem 1rem;
+    border-radius: 999px;
+    border: none;
+    background: rgba(167, 123, 249, 0.16);
+    font-weight: 600;
+    cursor: pointer;
+    color: color.scale(theme.$text-color, $lightness: 12%);
+    box-shadow: 0 10px 22px rgba(167, 123, 249, 0.18);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &.active {
+      background: linear-gradient(135deg, theme.$primary-color, color.scale(theme.$secondary-color, $lightness: -8%));
+      color: #fff;
+      box-shadow: 0 16px 32px rgba(167, 123, 249, 0.35);
+    }
+  }
+}
+
+form {
+  display: grid;
+  gap: 1.2rem;
+
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+
+    label {
+      font-weight: 600;
+      color: color.scale(theme.$text-color, $lightness: -5%);
+    }
+
+    input {
+      padding: 0.85rem 1.1rem;
+      border-radius: 16px;
+      border: 1px solid rgba(60, 37, 100, 0.15);
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.92);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+      &:focus {
+        border-color: color.scale(theme.$primary-color, $lightness: -4%);
+        box-shadow: 0 0 0 4px rgba(167, 123, 249, 0.2);
+        outline: none;
+      }
+
+      &.invalid {
+        border-color: #d62828;
+        box-shadow: 0 0 0 4px rgba(214, 40, 40, 0.15);
+      }
+    }
+  }
+
+  .field-error {
+    color: #d62828;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .message {
+    color: #d62828;
+    font-weight: 600;
+  }
+}
+
+.hint {
+  margin-top: 1.5rem;
+  text-align: center;
+
+  a {
+    color: theme.$primary-color;
+    cursor: pointer;
+    font-weight: 600;
+  }
+}
