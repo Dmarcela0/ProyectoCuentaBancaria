@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://proyectocuentabancaria-production.up.railway.app'
+  apiBaseUrl: 'https://proyectocuentabancaria-production.up.railway.app/api'
 };
