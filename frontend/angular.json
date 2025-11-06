@@ -64,6 +64,18 @@
               "browserTarget": "bankids-frontend:build:development"
             }
           },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "bankids-frontend:build:production"
+            },
+            "development": {
+              "browserTarget": "bankids-frontend:build:development"
+            }
+          },
           "defaultConfiguration": "development"
         },
         "test": {
