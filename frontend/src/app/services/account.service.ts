@@ -23,14 +23,14 @@ export class AccountService {
   constructor(private http: HttpClient) {}
 
   getSummary(): Observable<AccountSummary> {
-    return this.http.get<AccountSummary>(`${this.apiUrl}/summary`);
+    return this.http.get<AccountSummary>(`${this.apiUrl}/api/summary`);
   }
 
   addTransaction(payload: TransactionPayload): Observable<AccountSummary> {
-    return this.http.post<AccountSummary>(`${this.apiUrl}/transactions`, payload);
+    return this.http.post<AccountSummary>(`${this.apiUrl}/api/transactions`, payload);
   }
 
   addGoal(payload: GoalPayload): Observable<AccountSummary> {
-    return this.http.post<AccountSummary>(`${this.apiUrl}/goals`, payload);
+    return this.http.post<AccountSummary>(`${this.apiUrl}/api/goals`, payload);
   }
 }
