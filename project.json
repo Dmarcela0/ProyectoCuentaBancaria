@@ -1,0 +1,6 @@
+{
+  "framework": "angular",
+  "installCommand": "npm install",
+  "buildCommand": "cd frontend && npm install && npm run build -- --configuration production",
+  "outputDirectory": "frontend/dist/bankids-frontend"
+}
