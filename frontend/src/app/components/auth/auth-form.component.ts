@@ -15,7 +15,7 @@ export class AuthFormComponent {
 
   form = this.fb.group({
     childName: ['', Validators.required],
-    age: [10, [Validators.required, Validators.min(7), Validators.max(14)]],
+    age: [10, [Validators.required, Validators.min(0), Validators.max(17)]],
     guardianName: ['', Validators.required],
     guardianEmail: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]]
@@ -38,7 +38,7 @@ export class AuthFormComponent {
   submit(): void {
     if (this.mode === 'register' && this.form.invalid) {
       this.message = this.ageControl?.errors
-        ? 'La edad debe estar entre 7 y 14 años para crear una cuenta Tuticuenta.'
+        ? 'La edad debe estar entre 0 y 17 años para crear una cuenta Tuticuenta.'
         : 'Por favor revisa los datos.';
       this.form.markAllAsTouched();
       return;
@@ -93,7 +93,7 @@ export class AuthFormComponent {
       this.form.get('guardianName')?.clearValidators();
     } else {
       this.form.get('childName')?.setValidators([Validators.required]);
-      this.form.get('age')?.setValidators([Validators.required, Validators.min(7), Validators.max(14)]);
+      this.form.get('age')?.setValidators([Validators.required, Validators.min(0), Validators.max(17)]);
       this.form.get('guardianName')?.setValidators([Validators.required]);
     }
     this.form.get('childName')?.updateValueAndValidity({ emitEvent: false });

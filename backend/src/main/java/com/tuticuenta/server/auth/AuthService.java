@@ -35,7 +35,7 @@ public class AuthService {
         } catch (NumberFormatException ex) {
             return Optional.empty();
         }
-        if (age < 7 || age > 14) {
+        if (age < 0 || age > 17) {
             return Optional.empty();
         }
         if (repository.findByEmail(guardianEmail).isPresent()) {

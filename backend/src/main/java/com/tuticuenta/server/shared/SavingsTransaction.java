@@ -18,6 +18,18 @@ public class SavingsTransaction {
         this.date = date;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
     public String toJson() {
         return JsonUtils.object(
                 JsonUtils.stringField("description", description),

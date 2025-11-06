@@ -8,52 +8,59 @@
 
   button {
     flex: 1;
-    padding: 0.75rem;
+    padding: 0.85rem 1rem;
     border-radius: 999px;
-    border: 2px solid transparent;
-    background: rgba(167, 123, 249, 0.12);
+    border: none;
+    background: rgba(167, 123, 249, 0.16);
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    color: color.scale(theme.$text-color, $lightness: 12%);
+    box-shadow: 0 10px 22px rgba(167, 123, 249, 0.18);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
 
     &.active {
-      background: var(--primary-color);
+      background: linear-gradient(135deg, theme.$primary-color, color.scale(theme.$secondary-color, $lightness: -8%));
       color: #fff;
-      box-shadow: 0 12px 26px rgba(167, 123, 249, 0.35);
+      box-shadow: 0 16px 32px rgba(167, 123, 249, 0.35);
     }
   }
 }
 
 form {
   display: grid;
-  gap: 1rem;
+  gap: 1.2rem;
 
   .form-row {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.55rem;
 
     label {
       font-weight: 600;
+      color: color.scale(theme.$text-color, $lightness: -5%);
     }
 
     input {
-      padding: 0.75rem 1rem;
-      border-radius: 12px;
-      border: 1px solid rgba(60, 37, 100, 0.18);
+      padding: 0.85rem 1.1rem;
+      border-radius: 16px;
+      border: 1px solid rgba(60, 37, 100, 0.15);
       font-size: 1rem;
-      background: #fff;
+      background: rgba(255, 255, 255, 0.92);
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
       &:focus {
-        border-color: color.scale(theme.$primary-color, $lightness: -5%);
-        box-shadow: 0 0 0 3px rgba(167, 123, 249, 0.18);
+        border-color: color.scale(theme.$primary-color, $lightness: -4%);
+        box-shadow: 0 0 0 4px rgba(167, 123, 249, 0.2);
         outline: none;
       }
 
       &.invalid {
         border-color: #d62828;
-        box-shadow: 0 0 0 3px rgba(214, 40, 40, 0.15);
+        box-shadow: 0 0 0 4px rgba(214, 40, 40, 0.15);
       }
     }
   }
@@ -75,7 +82,7 @@ form {
   text-align: center;
 
   a {
-    color: var(--primary-color);
+    color: theme.$primary-color;
     cursor: pointer;
     font-weight: 600;
   }

@@ -4,6 +4,7 @@ backend/.mvn/
 backend/mvnw
 backend/mvnw.cmd
 backend/out/
+backend/lib/
 
 # Node
 frontend/node_modules/

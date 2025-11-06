@@ -11,13 +11,13 @@
     <label>Edad</label>
     <input
       type="number"
-      min="7"
-      max="14"
+      min="0"
+      max="17"
       formControlName="age"
       [class.invalid]="ageControl?.invalid && (ageControl?.dirty || ageControl?.touched)"
     />
     <small class="field-error" *ngIf="ageControl?.invalid && (ageControl?.dirty || ageControl?.touched)">
-      La edad debe estar entre 7 y 14 años.
+      La edad debe estar entre 0 y 17 años.
     </small>
   </div>
   <div class="form-row" *ngIf="mode === 'register'">

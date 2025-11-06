@@ -7,8 +7,7 @@ import { Component } from '@angular/core';
 })
 export class WelcomeComponent {
   benefits = [
-    'Metas de ahorro ilustradas en pesos colombianos',
-    'Consejos semanales para familias colombianas',
-    'Seguimiento de hábitos con personajes típicos del país'
+    'Respaldo y contenidos financieros del Banco Caja Social',
+    'Retos para niñas, niños y adolescentes de 0 a 17 años'
   ];
 }

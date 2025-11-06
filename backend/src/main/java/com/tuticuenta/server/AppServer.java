@@ -14,6 +14,7 @@ import com.sun.net.httpserver.HttpServer;
 
 import com.tuticuenta.server.account.AccountService;
 import com.tuticuenta.server.auth.AuthService;
+import com.tuticuenta.server.database.DatabaseClient;
 import com.tuticuenta.server.shared.DemoDataInitializer;
 import com.tuticuenta.server.shared.UserAccountRepository;
 import com.tuticuenta.server.util.TokenService;
@@ -26,7 +27,9 @@ public class AppServer {
 
     public AppServer(int port) throws IOException {
         this.httpServer = HttpServer.create(new InetSocketAddress(port), 0);
-        UserAccountRepository repository = new UserAccountRepository();
+        DatabaseClient databaseClient = new DatabaseClient(resolveDatabaseUrl());
+        databaseClient.initialize();
+        UserAccountRepository repository = new UserAccountRepository(databaseClient);
         this.tokenService = new TokenService();
         this.authService = new AuthService(repository, tokenService);
         this.accountService = new AccountService(repository);
@@ -127,6 +130,14 @@ public class AppServer {
             }
         }
         new AppServer(port).start();
+    }
+
+    private static String resolveDatabaseUrl() {
+        String envUrl = System.getenv("DATABASE_URL");
+        if (envUrl != null && !envUrl.isBlank()) {
+            return envUrl;
+        }
+        return "jdbc:postgresql://db.xjelotkvsagcinxbkgkh.supabase.co:5432/postgres?user=postgres&password=Garzon103*";
     }
 
     @FunctionalInterface

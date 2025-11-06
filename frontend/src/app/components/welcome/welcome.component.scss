@@ -2,36 +2,35 @@
 @use '../../../styles/theme';
 
 .hero {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+  gap: clamp(1.5rem, 4vw, 3rem);
   align-items: center;
 
   &__content {
     position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      inset: -16px -12px -24px auto;
-      width: 160px;
-      background: url('/assets/character-stars.svg') center/contain no-repeat;
-      opacity: 0.25;
-      transform: rotate(-8deg);
-    }
+    z-index: 1;
 
     h1 {
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2.3rem, 5vw, 3.4rem);
       margin-bottom: 1rem;
-      color: var(--primary-color);
+      color: theme.$text-color;
     }
 
     p {
       font-size: 1.1rem;
-      line-height: 1.6;
+      line-height: 1.7;
+      color: color.scale(theme.$text-color, $lightness: 8%);
       margin-bottom: 1.5rem;
-      color: color.scale(theme.$text-color, $lightness: 12%);
     }
+  }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
   }
 
   &__illustration {
@@ -39,24 +38,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 320px;
 
     &::before {
       content: '';
       position: absolute;
-      width: 320px;
-      height: 320px;
+      width: clamp(260px, 35vw, 360px);
+      height: clamp(260px, 35vw, 360px);
       border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(159, 243, 240, 0.6), transparent 70%),
-        radial-gradient(circle at 70% 70%, rgba(247, 169, 255, 0.45), transparent 80%);
+      background:
+        radial-gradient(circle at 30% 30%, rgba(159, 243, 240, 0.55), transparent 65%),
+        radial-gradient(circle at 70% 70%, rgba(247, 169, 255, 0.45), transparent 75%);
+      filter: blur(2px);
       z-index: 0;
-      filter: blur(0.5px);
     }
 
     .hero__main {
-      max-width: 320px;
-      width: 100%;
       position: relative;
       z-index: 1;
+      max-width: clamp(260px, 40vw, 360px);
+      width: 100%;
     }
 
     .hero__sticker {
@@ -65,57 +66,109 @@
       width: 120px;
       border-radius: 50%;
       background: #fff;
-      box-shadow: 0 12px 32px rgba(60, 37, 100, 0.16);
+      box-shadow: 0 20px 40px rgba(60, 37, 100, 0.18);
       padding: 1rem;
     }
 
     .hero__sticker--friends {
-      bottom: -12px;
+      bottom: -18px;
       left: -10px;
       transform: rotate(-6deg);
     }
 
     .hero__sticker--rocket {
-      top: -24px;
-      right: -10px;
+      top: -28px;
+      right: -12px;
       transform: rotate(8deg);
     }
+  }
+
+  &__cloud {
+    position: absolute;
+    width: clamp(180px, 30vw, 260px);
+    height: clamp(120px, 20vw, 180px);
+    background: rgba(255, 255, 255, 0.55);
+    border-radius: 50% 50% 40% 40%;
+    filter: blur(12px);
+    z-index: 0;
+  }
+
+  &__cloud--left {
+    top: -60px;
+    left: -40px;
+  }
+
+  &__cloud--right {
+    bottom: -40px;
+    right: 10%;
+  }
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 20px rgba(140, 111, 249, 0.18);
+  font-weight: 600;
+  color: color.scale(theme.$text-color, $lightness: -5%);
+
+  &::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, theme.$primary-color, theme.$secondary-color);
   }
 }
 
 .benefits {
-  margin: 3rem 0;
+  margin: clamp(2.5rem, 6vw, 3.5rem) 0;
   display: grid;
-  gap: 1.5rem;
+  gap: 1.75rem;
 
   .benefit {
     display: grid;
-    grid-template-columns: 80px 1fr;
+    grid-template-columns: 88px 1fr;
     align-items: center;
-    gap: 1rem;
-    padding: 1.5rem;
-    border-radius: 22px;
-    background: linear-gradient(135deg, rgba(167, 123, 249, 0.18), rgba(247, 169, 255, 0.22));
-    box-shadow: 0 10px 28px rgba(60, 37, 100, 0.12);
+    gap: 1.25rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border-radius: 26px;
+    background: linear-gradient(135deg, rgba(167, 123, 249, 0.18), rgba(159, 243, 240, 0.22));
+    box-shadow: 0 20px 40px rgba(60, 37, 100, 0.14);
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: auto 24px -40px auto;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(247, 169, 255, 0.35), transparent 70%);
+    }
 
     &__icon {
-      width: 80px;
-      height: 80px;
+      width: 88px;
+      height: 88px;
       border-radius: 50%;
       background: #fff;
       display: grid;
       place-items: center;
-      box-shadow: 0 12px 24px rgba(167, 123, 249, 0.22);
+      box-shadow: 0 16px 32px rgba(167, 123, 249, 0.24);
 
       img {
-        width: 48px;
+        width: 52px;
       }
     }
 
     &__text {
       h2 {
-        margin-bottom: 0.5rem;
-        font-size: 1.3rem;
+        margin-bottom: 0.6rem;
+        font-size: 1.35rem;
         color: theme.$text-color;
       }
 
@@ -128,7 +181,23 @@
 }
 
 .auth-section {
-  margin-top: 3rem;
-  border: 3px dashed rgba(198, 184, 255, 0.7);
-  background: linear-gradient(135deg, rgba(245, 237, 255, 0.95), rgba(247, 169, 255, 0.12));
+  margin-top: clamp(2.5rem, 6vw, 3.5rem);
+  border: 3px dashed rgba(198, 184, 255, 0.65);
+  background: linear-gradient(135deg, rgba(245, 237, 255, 0.95), rgba(247, 169, 255, 0.18));
+
+  h2 {
+    margin-top: 0;
+    color: theme.$text-color;
+  }
+}
+
+@media (max-width: 720px) {
+  .benefits .benefit {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .benefits .benefit__icon {
+    margin: 0 auto;
+  }
 }

@@ -9,7 +9,7 @@ public final class DemoDataInitializer {
     }
 
     public static void seed(UserAccountRepository repository) {
-        if (!repository.findAll().isEmpty()) {
+        if (repository.hasAnyAccount()) {
             return;
         }
         UserAccount demo = new UserAccount(

@@ -18,6 +18,18 @@ public class SavingsGoal {
         this.targetDate = targetDate;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public double getTargetAmount() {
+        return targetAmount;
+    }
+
+    public LocalDate getTargetDate() {
+        return targetDate;
+    }
+
     public String toJson() {
         return JsonUtils.object(
                 JsonUtils.stringField("name", name),

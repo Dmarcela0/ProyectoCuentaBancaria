@@ -20,15 +20,27 @@ public class UserAccount {
     private final List<SavingsGoal> goals;
 
     public UserAccount(String childName, int age, String guardianName, String guardianEmail, String passwordHash) {
-        this.id = UUID.randomUUID();
+        this(UUID.randomUUID(), childName, age, guardianName, guardianEmail, passwordHash, 0.0, new ArrayList<>(), new ArrayList<>());
+    }
+
+    public UserAccount(UUID id,
+                       String childName,
+                       int age,
+                       String guardianName,
+                       String guardianEmail,
+                       String passwordHash,
+                       double balance,
+                       List<SavingsTransaction> transactions,
+                       List<SavingsGoal> goals) {
+        this.id = id;
         this.childName = childName;
         this.age = age;
         this.guardianName = guardianName;
         this.guardianEmail = guardianEmail;
         this.passwordHash = passwordHash;
-        this.balance = 0.0;
-        this.transactions = new ArrayList<>();
-        this.goals = new ArrayList<>();
+        this.balance = balance;
+        this.transactions = new ArrayList<>(transactions);
+        this.goals = new ArrayList<>(goals);
     }
 
     public String getGuardianEmail() {
@@ -37,6 +49,34 @@ public class UserAccount {
 
     public String getPasswordHash() {
         return passwordHash;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getChildName() {
+        return childName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getGuardianName() {
+        return guardianName;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public List<SavingsTransaction> getTransactions() {
+        return new ArrayList<>(transactions);
+    }
+
+    public List<SavingsGoal> getGoals() {
+        return new ArrayList<>(goals);
     }
 
     public void deposit(String description, double amount) {
